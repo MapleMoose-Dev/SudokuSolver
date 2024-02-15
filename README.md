@@ -1,4 +1,11 @@
-You may include notes to the marker in a README.txt file.
+
+## ------------------------------------------------------------------------------------------------------
+ **RUNNING THE PROGRAM WITH ANT:**
+```
+ant run -Darg0=080000243000079100040000090693502070014907360070301429060000050002690000459000030
+```
+## -----------------------------------------------------------------------------------------------------
+
 
 Your program should solve any valid Sudoku problem. When completed you should have a program that can solve even the most difficult Sudoku puzzles. The initial problem should be specified as a String on the command line.  Three examples include the following:
 

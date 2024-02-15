@@ -94,6 +94,7 @@
 
   <target name="run" depends="jar" description="Run the application">
     <java jar="${jar.file}" fork="true" classpath="classpath">
+    <arg value="${arg0}" />
     </java>
   </target>
 
