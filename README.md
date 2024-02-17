@@ -63,3 +63,35 @@ Include trace files for two problems that work with your program.
 |080|900|000|
 
 ## Backtracking Notes pg 191
+
+**TODO**: Add more constraint propagation, ex: if there is only one `9` left in the row, even if has other possible options, if thats the only possible `9` for that square, choose that `9`. And continue to recurse.
+
+
+
+907156000325400086106823507000040801200080005508060000701234908830005714000718602
+
+907 156 000 
+325 400 086 
+106 823 507 
+------------------
+000 040 801 
+200 080 005 
+508 060 000 
+----------------
+701 234 908 
+830 005 714 
+000 718 602
+
+
+
+000 092 500
+000 060 010 
+574 001 000 
+
+000 000 021 
+708 000 406 
+640 000 000 
+
+000 200 694 
+050 030 000
+009 810 000

@@ -6,32 +6,24 @@ import org.junit.Assert;
 
 public class SudokuTest {
 
+    SudokuBoard board;
 
-    /**
-     * Sets up the player and the board
-     */
+
     @Before
-    public void setupPlayer() {
-       // testBoard = new Board((GameLoop) null);
-        // initialize the AI with a difficulty of 1.
-      //  testAI = new AIPlayer(1, Team.BLACK_TEAM);
+    public void setupBoard() {
+        board = new SudokuBoard("907156000325400086106823507000040801200080005508060000701234908830005714000718602");
+        board.printInFormat();
     }
 
-    /**
-     * Tests if the AIPlayer returns a move.
-     */
     @Test
-    public void testMove() {
-        // Test to determine if the AIPlayer returns a move
-       // Assert.assertNotNull(testAI.getMove(testBoard));
+    public void assertBoardIsValid() {
+       Assert.assertFalse(board.isInvalid());
     }
 
-    /**
-     * Test if the AIPlayer will return a legal move
-     */
+
     @Test
-    public void testValidMove() {
-        //Move test_move = testAI.getMove(testBoard);
-        //Assert.assertTrue(testBoard.applyMove(test_move.piece, test_move.start, test_move.end).isSuccessful());
+    public void testBacktracking() {
+        Assert.assertFalse(board.isInvalid());
     }
+
 }

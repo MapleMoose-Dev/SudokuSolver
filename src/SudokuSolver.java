@@ -1,4 +1,5 @@
 
+
 public class SudokuSolver {
     
     public static void main(String[] args) {
@@ -26,7 +27,7 @@ public class SudokuSolver {
         System.out.println("Sudoku Solver: " + elapsedTime / 1000000.0 + "ms");
 
         if (!board.isSolved()) {
-            //board = JFL.solveBoard(0, board);
+            board = JFL.solveBoard(0, board);
         }
 
         
@@ -35,9 +36,9 @@ public class SudokuSolver {
             // Print after value insertions
             board.printInFormat();
             //board.printAllPossible(rows)
-            board.printRows();
-            board.printColumns();
-            board.printSections();
+         //   board.printRows();
+        //    board.printColumns();
+         //   board.printSections();
         } else {
             System.out.println("NULL");
         }

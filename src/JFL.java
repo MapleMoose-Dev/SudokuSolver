@@ -33,12 +33,34 @@ public class JFL { // Jarvis-Function-Library
         for (int squareN = startingSquare; squareN < 81; ++squareN) { // loop through all squares starting from specific square
             SudokuSquare square = rows[(squareN - (squareN % 9)) / 9][squareN % 9];
             
+            //System.out.println(squareN);
+            if ((squareN - (squareN % 9)) / 9 == 3 && squareN % 9 == 1) {
+                System.out.println("ROW: " + (squareN - (squareN % 9)) / 9 + " SQUARE NUMBER " + squareN % 9);
+                square.getPossibleValues().print();
+                System.out.println("Number of possible Moves: " + square.getPossibleValues().size());
+            }
+
             if (square.getSquareValue() != 0) continue; // Square already has a found solution
-            
+             
             IntTable possibleValues = square.getPossibleValues();
             for (int i = 0; i < possibleValues.size(); ++i) {
                 SudokuBoard clonedBoard = board.cloneBoard();
-                clonedBoard.getRows()[(squareN - (squareN % 9)) / 9][squareN % 9].setSquareValue(possibleValues.at(i));
+
+                Integer x = clonedBoard.getRows()[(squareN - (squareN % 9)) / 9][squareN % 9].setSquareValue(possibleValues.at(i));
+
+                // DEBUG
+                if (x == null) {
+                    System.out.println("ROW: " + (squareN - (squareN % 9)) / 9 + " SQUARE NUMBER " + squareN % 9);
+                    System.out.println("Row Print: ");
+                    for (int q = 0; q < rows.length; ++q) {
+                        for (int w = 0; w < rows[q].length; ++w)
+                            System.out.print(rows[q][w].getSquareValue() + " ");
+                        System.out.println();
+                    }
+                    System.exit(0);
+                }
+                // DEBUG
+                
 
                 if (clonedBoard.isSolved())
                     return clonedBoard;
@@ -46,7 +68,7 @@ public class JFL { // Jarvis-Function-Library
                     continue;
                 else { // Not solved but is a valid move
                     SudokuBoard result = solveBoard(squareN + 1, clonedBoard);
-                    if (result != null && result.isSolved())
+                    if (result != null && result.isSolved() && !result.isInvalid())
                         return result;
                 }
             }
