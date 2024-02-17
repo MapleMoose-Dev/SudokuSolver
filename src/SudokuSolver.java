@@ -23,18 +23,19 @@ public class SudokuSolver {
 
         long startTime = System.nanoTime(); // Start Timer
         SudokuBoard board = new SudokuBoard(sudokuInput);
-        long elapsedTime = System.nanoTime() - startTime; // Start Timer
-        System.out.println("Sudoku Solver: " + elapsedTime / 1000000.0 + "ms");
 
         if (!board.isSolved()) {
             board = JFL.solveBoard(0, board);
         }
 
-        
-        if (board != null) {
-            System.out.println(board.isInvalid());
-            // Print after value insertions
+        long elapsedTime = System.nanoTime() - startTime; // Start Timer
+        System.out.println("Sudoku Solver: " + elapsedTime / 1000000.0 + "ms");
+       
+
+        if (board != null && !board.isInvalid() ) { 
             board.printInFormat();
+            // Print after value insertions
+            
             //board.printAllPossible(rows)
          //   board.printRows();
         //    board.printColumns();

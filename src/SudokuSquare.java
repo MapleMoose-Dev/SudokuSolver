@@ -52,34 +52,13 @@ public class SudokuSquare {
     }
 
    
-    public Integer setSquareValue(int newSquareValue) {
-        if (newSquareValue == 0) return 0; // redundant to set its value to zero
+    public void setSquareValue(int newSquareValue) {
+        if (newSquareValue == 0) return; // redundant to set its value to zero
 
-
-        
         if (squareValue == 0 && possibleValues.size() == 0) {
-            System.out.println("Initial: " + squareValue + " | New: " + newSquareValue);
-            System.out.println("Square cant be any value");
-            return null;
+            return;
         }
 
-        /* 
-        if (squareValue != 0 && newSquareValue != squareValue) {
-            possibleValues.print();
-            System.out.println("Initial: " + squareValue + " | New: " + newSquareValue);
-            System.out.println("Square value is already " + squareValue);
-            return null;
-        }
-
-       
-
-        if (possibleValues.find(newSquareValue) == -1 && newSquareValue != squareValue) {
-            possibleValues.print();
-            System.out.println("Initial: " + squareValue + " | New: " + newSquareValue);
-            System.out.println("ATTEMPTED TO SET SQUARE VALUE TO " + newSquareValue);
-            return null;
-        }
-         */
         squareValue = newSquareValue; // Set the value of the square
         possibleValues.clear(); // clear the possible moves, no other possible moves 
 
@@ -97,7 +76,7 @@ public class SudokuSquare {
         for (int squareNumber = 0; squareNumber < section.length; ++squareNumber) {
             section[squareNumber].removePossibleValue(newSquareValue);
         }
-        return 1;
+
     }
     
 }

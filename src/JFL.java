@@ -1,118 +1,35 @@
 
-
 public class JFL { // Jarvis-Function-Library
- 
-    /*
-    public static SudokuBoard attemptPossibleMovesFromSquare() {
-        for (int possibleMoveNumber = 0; possibleMoveNumber < )
-    }
-
-
-    public static SudokuBoard doAIMagic(SudokuBoard boardToSolve) {
-    
-        SudokuBoard tempBoard = boardToSolve.cloneBoard();
-
-        for (int row = 0; row < rows.length; ++row) {
-            for (int squareNumber = 0; squareNumber < rows[row].length; ++squareNumber) {
-                
-                
-                
-                System.out.print("[" + row + "][" + squareNumber + "] = ");
-                rows[row][squareNumber].printPossibleValues();
-            }
-        }
-
-
-    }
-*/
 
     public static SudokuBoard solveBoard(int startingSquare, SudokuBoard board) {
+
+        if (startingSquare == 81) // Hit end of sudoku
+            return board;
+
         SudokuSquare[][] rows = board.getRows();
-        //System.out.println(startingSquare);
+        SudokuSquare square = rows[(startingSquare - (startingSquare % 9)) / 9][startingSquare % 9];
 
-        for (int squareN = startingSquare; squareN < 81; ++squareN) { // loop through all squares starting from specific square
-            SudokuSquare square = rows[(squareN - (squareN % 9)) / 9][squareN % 9];
-            
-            //System.out.println(squareN);
-            if ((squareN - (squareN % 9)) / 9 == 3 && squareN % 9 == 1) {
-                System.out.println("ROW: " + (squareN - (squareN % 9)) / 9 + " SQUARE NUMBER " + squareN % 9);
-                square.getPossibleValues().print();
-                System.out.println("Number of possible Moves: " + square.getPossibleValues().size());
-            }
-
-            if (square.getSquareValue() != 0) continue; // Square already has a found solution
-             
-            IntTable possibleValues = square.getPossibleValues();
-            for (int i = 0; i < possibleValues.size(); ++i) {
-                SudokuBoard clonedBoard = board.cloneBoard();
-
-                Integer x = clonedBoard.getRows()[(squareN - (squareN % 9)) / 9][squareN % 9].setSquareValue(possibleValues.at(i));
-
-                // DEBUG
-                if (x == null) {
-                    System.out.println("ROW: " + (squareN - (squareN % 9)) / 9 + " SQUARE NUMBER " + squareN % 9);
-                    System.out.println("Row Print: ");
-                    for (int q = 0; q < rows.length; ++q) {
-                        for (int w = 0; w < rows[q].length; ++w)
-                            System.out.print(rows[q][w].getSquareValue() + " ");
-                        System.out.println();
-                    }
-                    System.exit(0);
-                }
-                // DEBUG
-                
-
-                if (clonedBoard.isSolved())
-                    return clonedBoard;
-                else if (clonedBoard.isInvalid())
-                    continue;
-                else { // Not solved but is a valid move
-                    SudokuBoard result = solveBoard(squareN + 1, clonedBoard);
-                    if (result != null && result.isSolved() && !result.isInvalid())
-                        return result;
-                }
-            }
-            
-            return null;
-        }
-        return board;
-    }
-
-
-
-/*
-local function check(startingMove, board) {
-   
-    for (int i = startingMove, i < 81) { // loop through all squares starting from specific square
-        
-        if squareValue ~= 0 then // square already has a value
-            continue
-        end 
-
-        local moves = getPossibleMoves()
-
-        for each move {
-            local cloneBoard = board.clone()
-            cloneBoard.makeMove(i)
-            if board.Solved()
-                return cloneBoard
-            elseif Invalid // created a board with no solution
-                // do nothing, try next move
-            else // Not solved but was a valid move
-                local result = check(i + 1, cloneBoard) // try moves at next square
-                if result isA solution
-                    return cloneBoard
-            end
+        if (square.getSquareValue() != 0) { // Square already has a found solution
+            return solveBoard(startingSquare + 1, board);
         }
 
-        return null; // All the moves tried failed, back track
+        // Square needs to be solved
+        IntTable possibleValues = square.getPossibleValues();
+        for (int i = 0; i < possibleValues.size(); ++i) {
 
+            SudokuBoard clonedBoard = board.cloneBoard();
+            clonedBoard.getRows()[(startingSquare - (startingSquare % 9)) / 9][startingSquare % 9]
+                    .setSquareValue(possibleValues.at(i));
+
+            if (!clonedBoard.isInvalid()) { // Not solved but is a valid move
+                SudokuBoard result = solveBoard(startingSquare + 1, clonedBoard);
+                if (result != null && result.isSolved() && !result.isInvalid())
+                    return result;
+            }
+        }
+
+        return null; // Gone through every possible move in the loop, no solution exist
     }
 
-}
-
-
-check(0, board)
- */
 
 }

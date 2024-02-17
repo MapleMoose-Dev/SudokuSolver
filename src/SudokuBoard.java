@@ -73,23 +73,7 @@ public class SudokuBoard {
 
         for (int i = 0; i < 81; ++i) { // loop through input string
             int squareValue = Integer.valueOf(input.substring(i, i + 1));
-         
-           Integer x =   rows[row][squareNumber].setSquareValue(squareValue);
-
-            if (x == null) {
-    
-                System.out.println("ROW: "  + row + " SQUARE NUMBER " + squareNumber);
-
-                System.out.println("Row Print: ");
-                for (int q = 0; q < rows.length; ++q) {
-                    for (int w = 0; w < rows[q].length; ++w)
-                        System.out.print(rows[q][w].getSquareValue() + " ");
-                   System.out.println();
-                }
-                System.exit(0);
-            }
-
-                
+            rows[row][squareNumber].setSquareValue(squareValue);
 
             ++squareNumber; // keep track of which row/square number its at
             if (squareNumber == 9) { // hit the end of the row, move down a row
@@ -105,21 +89,7 @@ public class SudokuBoard {
         int row = 0;
 
         for (int i = 0; i < 81; ++i) { // loop through input string
-            Integer x = rows[row][squareNumber].setSquareValue(rowToCopyFrom[row][squareNumber].getSquareValue());
-
-
-            if (x == null) {
-                System.out.println("ROW: " + row + " SQUARE NUMBER " + squareNumber);
-
-                System.out.println("Row Print: ");
-                for (int q = 0; q < rows.length; ++q) {
-                    for (int w = 0; w < rows[q].length; ++w)
-                        System.out.print(rows[q][w].getSquareValue() + " ");
-                    System.out.println();
-                }
-                System.exit(0);
-            }
-
+            rows[row][squareNumber].setSquareValue(rowToCopyFrom[row][squareNumber].getSquareValue());
 
             ++squareNumber; // keep track of which row/square number its at
             if (squareNumber == 9) { // hit the end of the row, move down a row
@@ -213,9 +183,12 @@ public class SudokuBoard {
     final static private int possibleValues[] = {1,2,3,4,5,6,7,8,9};
     private boolean checkArray(SudokuSquare[] array) {
         IntTable tempNumbers = new IntTable(possibleValues);
-        
+
         for (int i = 0; i < array.length; ++i) {
             int squareValue = array[i].getSquareValue();
+
+            if (squareValue == 0) continue;
+
             if (tempNumbers.find(squareValue) != -1) { // Number exists in the array
                 tempNumbers.remove(tempNumbers.find(squareValue));
             } else { // Number was already found
@@ -229,26 +202,34 @@ public class SudokuBoard {
     public boolean isInvalid() {
         for (int row = 0; row < rows.length; ++row) {
             for (int squareNumber = 0; squareNumber < rows[row].length; ++squareNumber)
-                if (rows[row][squareNumber].getSquareValue() == 0 && rows[row][squareNumber].getPossibleValues().size() == 0)
+                if (rows[row][squareNumber].getSquareValue() == 0 && rows[row][squareNumber].getPossibleValues().size() == 0) {
+                  //  System.out.println("Invalid - No possible Moves for square");
                     return true;
+                }
         }
 
         // Check rows
         for (int row = 0; row < rows.length; ++row) {
-            if (!checkArray(rows[row])) 
-                return true; // Invalid Row
+            if (!checkArray(rows[row])) {
+               // System.out.println("Invalid Row: " + row);
+                return true;
+            } // Invalid Row
         }
 
         // Check Columns
         for (int column = 0; column < columns.length; ++column) {
-            if (!checkArray(columns[column]))
-                return true; // Invalid Row
+            if (!checkArray(columns[column])) {
+               // System.out.println("Invalid Column: " + column);
+                return true;
+            } // Invalid Column
         }
 
         // Check Sections
         for (int sec = 0; sec < sections.length; ++sec) {
-            if (!checkArray(sections[sec]))
-                return true; // Invalid sec
+            if (!checkArray(sections[sec])) {
+               // System.out.println("Invalid Section: " + sec);
+                return true;
+            }  // Invalid section
         }
 
 
