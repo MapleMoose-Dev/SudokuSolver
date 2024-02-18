@@ -20,7 +20,7 @@ public class SudokuSquare {
         this.section = section;
     }
 
-    public IntTable getPossibleValues() {
+    public IntTable getPossibleValues() { // Get possible values for the square
         return possibleValues.clone();
     }
 
@@ -47,22 +47,24 @@ public class SudokuSquare {
         possibleValues.remove(possibleValues.find(eliminatedSquareValue)); // if it exists, remove it, otherwise ignore
 
         if (possibleValues.size() == 1 && squareValue == 0) { // last possible value for the square
-           setSquareValue(possibleValues.at(0)); 
+           setSquareValue(possibleValues.at(0)); // Set its value
         }  
     }
 
    
     public void setSquareValue(int newSquareValue) {
-        if (newSquareValue == 0) return; // redundant to set its value to zero
+        if (newSquareValue == 0) return; // redundant to set its own value to zero
 
-        if (squareValue == 0 && possibleValues.size() == 0) {
-            return;
+        if (squareValue == 0 && possibleValues.size() == 0) { // Cant set the square's value because its not a possible option
+            return; 
         }
 
         squareValue = newSquareValue; // Set the value of the square
         possibleValues.clear(); // clear the possible moves, no other possible moves 
 
-        // Remove value from its row
+        // Constraint Propagation, uses recursion
+
+        // Remove the value from its row
         for (int squareNumber = 0; squareNumber < row.length; ++squareNumber) {
             row[squareNumber].removePossibleValue(newSquareValue);
         }
