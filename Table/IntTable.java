@@ -49,6 +49,8 @@
  * @author Noah Bulas
  * @version V 2.0 - Al.28,23
  */
+package Table;
+
 public class IntTable extends abs_table {
 
 

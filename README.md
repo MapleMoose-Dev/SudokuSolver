@@ -1,11 +1,4 @@
 
-## ------------------------------------------------------------------------------------------------------
- **RUNNING THE PROGRAM WITH ANT:**
-```
-ant run -Darg0=080000243000079100040000090693502070014907360070301429060000050002690000459000030
-```
-## -----------------------------------------------------------------------------------------------------
-
 
 Your program should solve any valid Sudoku problem. When completed you should have a program that can solve even the most difficult Sudoku puzzles. The initial problem should be specified as a String on the command line.  Three examples include the following:
 
@@ -47,22 +40,4 @@ Note that you can use AC-1 for consistency.  That is, when an entire consistency
 Note that you may want to search for consistency more than just when a value is entered (although this will likely be the initiating factor).  For example, if all but one value in a block is specified then the remaining value is also determined.  Similarly, if only one variable in a row, block, or column contains a value, then that value should be assigned to that variable.  As an example, consider three remaining unknown squares in a block with domains {2, 3, 4}, {2, 3}, and {2, 3}.  The first variable must be 4 since the other two cannot be four.  You may find additional situations as you program.
 
 Include trace files for two problems that work with your program.
-
-
-700560000501000000000000204003000070000030100406219000605003001000800026080900000
-|700|560|000|
-|501|000|000|
-|000|000|204|
-------------
-|003|000|070|
-|000|030|100|
-|406|219|000|
-------------
-|605|003|001|
-|000|800|026|
-|080|900|000|
-
-
-
-ant run -Darg0 = 906080000100070005052003800000700500200000004001004000005800730700060009000090406
 

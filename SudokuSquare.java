@@ -1,3 +1,4 @@
+import Table.IntTable;
 
 /*
     class represents each square on a sudoku

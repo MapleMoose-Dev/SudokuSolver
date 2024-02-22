@@ -1,4 +1,5 @@
 
+import Table.IntTable;
 
 public class SudokuBoard {
 

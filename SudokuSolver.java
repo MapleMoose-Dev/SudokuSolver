@@ -1,4 +1,5 @@
 
+import Table.IntTable;
 /**
  * Main Class for solving Sudokus
  * 

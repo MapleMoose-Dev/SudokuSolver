@@ -7,6 +7,8 @@
  * @version V 2.0 - Al.28,23
  */
 
+package Table;
+
 public abstract class abs_table {
 
     boolean frozen = false;
