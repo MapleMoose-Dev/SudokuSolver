@@ -1,8 +1,9 @@
 
 import Table.IntTable;
+
+
 /**
  * Main Class for solving Sudokus
- * 
  */
 public class SudokuSolver {
    
@@ -65,6 +66,7 @@ public class SudokuSolver {
             throw new Error("Sudoku Input needs to be all numbers");
         }
         
+      
 
         //--------------------------------------
         //-------- Check Board ------------
@@ -77,7 +79,9 @@ public class SudokuSolver {
             board = solveBoard(0, board); // Backtrack search, starting at square 0
 
         long elapsedTime = System.nanoTime() - startTime; // Start Timer
-        System.out.println("Sudoku Solver: " + elapsedTime / 1000000.0 + "ms");
+
+        if (args.length >= 2 && args[1].equals("-t")) // Print out time taken only with -t as a second argument
+            System.out.println("Sudoku Solver: " + elapsedTime / 1000000.0 + "ms");
        
         //--------------------------------------
         //------ Completed Search ------

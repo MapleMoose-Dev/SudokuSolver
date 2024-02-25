@@ -12,32 +12,18 @@ Your program should solve any valid Sudoku problem. When completed you should ha
  You program should solve the Sudoku and output the solution as formatted text.  For example, given the first input the output should look like to the following (remember proper formatting is important for the grading process):
 
 |987|156|243|
-
 |325|479|186|
-
 |146|823|597|
-
 ------------
-
 |693|542|871|
-
 |214|987|365|
-
 |578|361|429|
-
 ------------
-
 |761|234|958|
-
 |832|695|714|
-
 |459|718|632|
 
- **To solve the puzzle you should use a combination of consistency and backtracking search.**  It is up to you to decide how much consistency propagation you want to use and how much backtracking search.
 
-Note that you can use AC-1 for consistency.  That is, when an entire consistency pass completes with no change you can stop applying consistency.  Alternatively, you could use AC-3, but there are no additional marks for this.
-
-Note that you may want to search for consistency more than just when a value is entered (although this will likely be the initiating factor).  For example, if all but one value in a block is specified then the remaining value is also determined.  Similarly, if only one variable in a row, block, or column contains a value, then that value should be assigned to that variable.  As an example, consider three remaining unknown squares in a block with domains {2, 3, 4}, {2, 3}, and {2, 3}.  The first variable must be 4 since the other two cannot be four.  You may find additional situations as you program.
 
 Include trace files for two problems that work with your program.
 
