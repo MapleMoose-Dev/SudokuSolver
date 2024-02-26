@@ -7,6 +7,7 @@ public class SudokuBoard {
     private SudokuSquare columns[][]; // 2D array of SudokuSquares
     private SudokuSquare sections[][]; // 2D array of SudokuSquares
 
+
     private void initializeArrays() {
 
         // The arrays hold the same 81 squares, it points to different squares just in a different format
@@ -67,6 +68,7 @@ public class SudokuBoard {
 
     }
 
+
     // Set the value of each square from input string
     public void insertDataIntoRows(String input) {
         int squareNumber = 0;
@@ -84,6 +86,7 @@ public class SudokuBoard {
         }
     }
 
+
     // Set the value of each square from input string
     public void insertDataIntoRows(SudokuSquare[][] rowToCopyFrom) {
         int squareNumber = 0;
@@ -100,14 +103,17 @@ public class SudokuBoard {
         }
     }
 
+
     public SudokuBoard(String input) {
         initializeArrays();
         insertDataIntoRows(input);
     }
     
+
     private SudokuBoard() {
         initializeArrays();
     }
+
 
     // Print all the rows
     public void printRows() {
@@ -149,8 +155,8 @@ public class SudokuBoard {
         }
     }
 
+    // Print the board in the format which will be marked
     public void printInFormat() {
-
         for (int row = 0; row < rows.length; ++row) {
             System.out.print("|");
             for (int squareNumber = 0; squareNumber < rows[row].length; ++squareNumber) {
@@ -164,6 +170,7 @@ public class SudokuBoard {
         }
     }
 
+    // Create a clone of the board, completely detached from this.
     public SudokuBoard cloneBoard() {
         SudokuBoard newBoard = new SudokuBoard();
         newBoard.insertDataIntoRows(this.rows);
@@ -171,6 +178,7 @@ public class SudokuBoard {
         return newBoard;
      }
 
+     // Return true if board is solved (only checks if every square is filled)
     public boolean isSolved() {
         for (int row = 0; row < rows.length; ++row) {
             for (int squareNumber = 0; squareNumber < rows[row].length; ++squareNumber)
@@ -181,7 +189,9 @@ public class SudokuBoard {
     }
 
 
+
     final static private int possibleValues[] = {1,2,3,4,5,6,7,8,9};
+    // Makes sure only one of every number exists in the given array, returns false if otherwise
     private boolean checkArray(SudokuSquare[] array) {
         IntTable tempNumbers = new IntTable(possibleValues);
 
@@ -199,8 +209,10 @@ public class SudokuBoard {
         return true; // Valid row/section/column
     }
 
-
+    // return true is the board is invalid (duplicate numbers in a row, column, or section )
     public boolean isInvalid() {
+
+        // Make sure if a square is empty, it still has possible values (isn't fully domain restricted)
         for (int row = 0; row < rows.length; ++row) {
             for (int squareNumber = 0; squareNumber < rows[row].length; ++squareNumber)
                 if (rows[row][squareNumber].getSquareValue() == 0 && rows[row][squareNumber].getPossibleValues().size() == 0) {
@@ -234,7 +246,7 @@ public class SudokuBoard {
         }
 
 
-        return false;
+        return false; // Board is valid
     }
 
     public SudokuSquare[][] getRows() {

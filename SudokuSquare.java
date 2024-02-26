@@ -13,10 +13,12 @@ public class SudokuSquare {
     private SudokuSquare column[]; // The array column the square is in
     private SudokuSquare section[]; // The array section (3x3 grid) the square is in
 
+
     SudokuSquare() {
         possibleValues = new IntTable(startingValues); // Initialize the possible values table
     }
 
+    
     public void setSection(SudokuSquare section[]) { // Sets which section the square is in
         this.section = section;
     }

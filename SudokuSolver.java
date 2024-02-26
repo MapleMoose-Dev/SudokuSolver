@@ -77,15 +77,15 @@ public class SudokuSolver {
 
         if (!board.isSolved())  // If the board was not solely solved by constraint propagation
             board = solveBoard(0, board); // Backtrack search, starting at square 0
-
+        
+         //--------------------------------------
+        //------ Completed Search ------
+        //--------------------------------------
+        
         long elapsedTime = System.nanoTime() - startTime; // Start Timer
 
         if (args.length >= 2 && args[1].equals("-t")) // Print out time taken only with -t as a second argument
             System.out.println("Sudoku Solver: " + elapsedTime / 1000000.0 + "ms");
-       
-        //--------------------------------------
-        //------ Completed Search ------
-        //--------------------------------------
 
         if (board != null && !board.isInvalid() ) {  // Found a solution to the board
             
