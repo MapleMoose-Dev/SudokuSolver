@@ -1,19 +1,15 @@
-**RUNNING THE PROGRAM**
+## Java SudokuSolver
+
+This java program will solve any possible Sudoku Puzzle. 
+
+**RUNNING THE PROGRAM**<br>
 `java SudokuSolver 080000243000079100040000090693502070014907360070301429060000050002690000459000030 -t`
+
+The first argument is the board, left to right, top to bottom. A zero represents an unknown number
 
 `-t ` is an optional 2nd parameter which will print out the time taken for the program to solve.
 
-Your program should solve any valid Sudoku problem. When completed you should have a program that can solve even the most difficult Sudoku puzzles. The initial problem should be specified as a String on the command line.  Three examples include the following:
-
-080000243000079100040000090693502070014907360070301429060000050002690000459000030
-907156000325400086106823507000040801200080005508060000701234908830005714000718602
-000092500000060010574001000000000021708000406640000000000200694050030000009810000
-
- Where input proceeds left to right, and then onto the next row.  A zero indicates the square is unknown and a number indicates a known value.  See the solution below that corresponds to the first input.
-
-
- You program should solve the Sudoku and output the solution as formatted text.  For example, given the first input the output should look like to the following (remember proper formatting is important for the grading process):
-
+The solution will be printed in the format:
 |987|156|243|
 |325|479|186|
 |146|823|597|
@@ -26,7 +22,6 @@ Your program should solve any valid Sudoku problem. When completed you should ha
 |832|695|714|
 |459|718|632|
 
-
-
-Include trace files for two problems that work with your program.
+which is equivalent to: <br>
+`987156243325479186146823597693542871214987365578361429761234958832695714459718632`
 
