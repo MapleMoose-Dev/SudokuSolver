@@ -9,7 +9,8 @@ The first argument is the board, left to right, top to bottom. A zero represents
 
 `-t ` is an optional 2nd parameter which will print out the time taken for the program to solve.
 
-The solution will be printed in the format:
+The solution will be printed in the format: <br>
+```
 |987|156|243|
 |325|479|186|
 |146|823|597|
@@ -21,7 +22,7 @@ The solution will be printed in the format:
 |761|234|958|
 |832|695|714|
 |459|718|632|
-
+```
 which is equivalent to: <br>
 `987156243325479186146823597693542871214987365578361429761234958832695714459718632`
 
